@@ -2,7 +2,6 @@ import { Keypair } from '@solana/web3.js';
 import { mnemonicToSeedSync } from 'bip39';
 import { derivePath } from 'ed25519-hd-key';
 const bs58js = require('bs58js')
-import bs58 from 'bs58'
 
 export function getWallet(wallet: string): Keypair {
   // most likely someone pasted the private key in binary format
@@ -19,5 +18,5 @@ export function getWallet(wallet: string): Keypair {
   }
 
   // most likely someone pasted base58 encoded private key
-  return Keypair.fromSecretKey(bs58.decode(wallet));
+  return Keypair.fromSecretKey(bs58js.decode(wallet));
 }
